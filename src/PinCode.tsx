@@ -612,25 +612,16 @@ class PinCode extends React.PureComponent<IProps, IState> {
           enter={this.getEnterTitle}
           update={this.getUpdateTitle}
         >
-          {({ opacity, colorTitle, colorSubtitle, opacityTitle }: any) => (
-            <View
-              style={[
-                { opacity },
-                this.props.styleViewTitle
-                  ? this.props.styleViewTitle
-                  : styles.viewTitle
-              ]}
-            >
-              {this.props.titleComponent
-                ? this.props.titleComponent()
-                : this.renderTitle(
-                    colorTitle,
-                    opacityTitle,
-                    attemptFailed,
-                    showError
-                  )}
-            </View>
-          )}
+          {({ opacity, colorTitle, opacityTitle }: any) =>
+            this.props.titleComponent
+              ? this.props.titleComponent()
+              : this.renderTitle(
+                  colorTitle,
+                  opacityTitle,
+                  attemptFailed,
+                  showError
+                )
+          }
         </Animate>
         <View style={styles.flexCirclePassword}>
           {this.props.passwordComponent
@@ -643,25 +634,16 @@ class PinCode extends React.PureComponent<IProps, IState> {
           enter={this.getEnterTitle}
           update={this.getUpdateTitle}
         >
-          {({ opacity, colorTitle, colorSubtitle, opacityTitle }: any) => (
-            <View
-              style={[
-                { opacity },
-                this.props.styleViewTitle
-                  ? this.props.styleViewTitle
-                  : styles.viewTitle
-              ]}
-            >
-              {this.props.subtitleComponent
-                ? this.props.subtitleComponent()
-                : this.renderSubtitle(
-                    colorSubtitle,
-                    opacityTitle,
-                    attemptFailed,
-                    showError
-                  )}
-            </View>
-          )}
+          {({ opacity, colorSubtitle, opacityTitle }: any) =>
+            this.props.subtitleComponent
+              ? this.props.subtitleComponent()
+              : this.renderSubtitle(
+                  colorSubtitle,
+                  opacityTitle,
+                  attemptFailed,
+                  showError
+                )
+          }
         </Animate>
         <Grid style={styles.grid}>
           <Row
@@ -759,7 +741,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
                   : styles.colEmpty
               }
             >
-              {this.props.emptyColumnComponent || null}
+              {this.props.emptyColumnComponent}
             </Col>
             <Col
               style={
@@ -880,7 +862,7 @@ let styles = StyleSheet.create({
     textAlign: "center"
   },
   flexCirclePassword: {
-    flex: 2,
+    marginVertical: 24,
     justifyContent: "center",
     alignItems: "center"
   },

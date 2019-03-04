@@ -367,25 +367,15 @@ class PinCode extends React.PureComponent {
         return (React.createElement(react_native_1.View, { style: this.props.styleContainer
                 ? this.props.styleContainer
                 : styles.container },
-            React.createElement(Animate_1.default, { show: true, start: this.getStartTitle, enter: this.getEnterTitle, update: this.getUpdateTitle }, ({ opacity, colorTitle, colorSubtitle, opacityTitle }) => (React.createElement(react_native_1.View, { style: [
-                    { opacity },
-                    this.props.styleViewTitle
-                        ? this.props.styleViewTitle
-                        : styles.viewTitle
-                ] }, this.props.titleComponent
+            React.createElement(Animate_1.default, { show: true, start: this.getStartTitle, enter: this.getEnterTitle, update: this.getUpdateTitle }, ({ opacity, colorTitle, opacityTitle }) => this.props.titleComponent
                 ? this.props.titleComponent()
-                : this.renderTitle(colorTitle, opacityTitle, attemptFailed, showError)))),
+                : this.renderTitle(colorTitle, opacityTitle, attemptFailed, showError)),
             React.createElement(react_native_1.View, { style: styles.flexCirclePassword }, this.props.passwordComponent
                 ? this.props.passwordComponent()
                 : this.renderCirclePassword()),
-            React.createElement(Animate_1.default, { show: true, start: this.getStartTitle, enter: this.getEnterTitle, update: this.getUpdateTitle }, ({ opacity, colorTitle, colorSubtitle, opacityTitle }) => (React.createElement(react_native_1.View, { style: [
-                    { opacity },
-                    this.props.styleViewTitle
-                        ? this.props.styleViewTitle
-                        : styles.viewTitle
-                ] }, this.props.subtitleComponent
+            React.createElement(Animate_1.default, { show: true, start: this.getStartTitle, enter: this.getEnterTitle, update: this.getUpdateTitle }, ({ opacity, colorSubtitle, opacityTitle }) => this.props.subtitleComponent
                 ? this.props.subtitleComponent()
-                : this.renderSubtitle(colorSubtitle, opacityTitle, attemptFailed, showError)))),
+                : this.renderSubtitle(colorSubtitle, opacityTitle, attemptFailed, showError)),
             React.createElement(react_native_easy_grid_1.Grid, { style: styles.grid },
                 React.createElement(react_native_easy_grid_1.Row, { style: this.props.styleRowButtons
                         ? this.props.styleRowButtons
@@ -419,7 +409,7 @@ class PinCode extends React.PureComponent {
                         : styles.row },
                     React.createElement(react_native_easy_grid_1.Col, { style: this.props.styleEmptyColumn
                             ? this.props.styleEmptyColumn
-                            : styles.colEmpty }, this.props.emptyColumnComponent || null),
+                            : styles.colEmpty }, this.props.emptyColumnComponent),
                     React.createElement(react_native_easy_grid_1.Col, { style: this.props.styleColumnButtons
                             ? this.props.styleColumnButtons
                             : styles.colButtonCircle }, this.props.buttonNumberComponent
@@ -511,7 +501,7 @@ let styles = react_native_1.StyleSheet.create({
         textAlign: "center"
     },
     flexCirclePassword: {
-        flex: 2,
+        marginVertical: 24,
         justifyContent: "center",
         alignItems: "center"
     },
