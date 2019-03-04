@@ -812,7 +812,6 @@ let styles = StyleSheet.create({
     alignItems: "center"
   },
   viewTitle: {
-    flexDirection: "column",
     justifyContent: "flex-end",
     alignItems: "center",
     flex: 2
@@ -826,6 +825,7 @@ let styles = StyleSheet.create({
     marginLeft: grid.unit / 2,
     marginRight: grid.unit / 2,
     alignItems: "center",
+    justifyContent: "center",
     width: grid.unit * 4,
     height: grid.unit * 4
   },
@@ -838,8 +838,7 @@ let styles = StyleSheet.create({
   colIcon: {
     alignSelf: "center",
     justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column"
+    alignItems: "center"
   },
   text: {
     fontSize: grid.unit * 2,
@@ -885,6 +884,7 @@ let styles = StyleSheet.create({
   grid: {
     maxWidth: grid.unit * 16.25,
     alignSelf: "center",
+    justifyContent: "center",
     flex: 1
   }
 });
