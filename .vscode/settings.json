@@ -1,4 +1,0 @@
-{
-  "typescript.suggest.completeFunctionCalls": true,
-  "typescript.validate.enable": true
-}
