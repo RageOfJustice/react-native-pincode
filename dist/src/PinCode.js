@@ -394,10 +394,13 @@ class PinCode extends React.PureComponent {
     }
     render() {
         const { password, showError, attemptFailed, changeScreen } = this.state;
+        const start = this.getStartTitle();
+        const enter = this.getEnterTitle();
+        const update = this.getUpdateTitle();
         return (<View style={this.props.styleContainer
             ? this.props.styleContainer
             : styles.container}>
-        <Animate show start={this.getStartTitle()} enter={this.getEnterTitle()} update={this.getUpdateTitle()}>
+        <Animate show start={start} enter={enter} update={update}>
           {({ opacity, colorTitle, opacityTitle }) => this.props.titleComponent
             ? this.props.titleComponent()
             : this.renderTitle({
@@ -413,7 +416,7 @@ class PinCode extends React.PureComponent {
             ? this.props.passwordComponent()
             : this.renderCirclePassword()}
         </View>
-        <Animate show start={this.getStartTitle()} enter={this.getEnterTitle()} update={this.getUpdateTitle()}>
+        <Animate show start={start} enter={enter} update={update}>
           {({ opacity, colorSubtitle, opacityTitle }) => this.props.subtitleComponent
             ? this.props.subtitleComponent()
             : this.renderSubtitle({
@@ -526,7 +529,6 @@ let styles = StyleSheet.create({
     row: {
         justifyContent: "center",
         alignItems: "center",
-        width: "100%",
         height: grid.unit * 5.5
     },
     colButtonCircle: {
@@ -591,7 +593,7 @@ let styles = StyleSheet.create({
     },
     grid: {
         maxWidth: grid.unit * 16.25,
-        alignItems: 'center',
+        alignSelf: 'center',
         flex: 1,
     }
 });
