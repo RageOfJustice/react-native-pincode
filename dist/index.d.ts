@@ -113,7 +113,7 @@ declare class PINCode extends React.PureComponent<IProps, IState> {
     componentWillMount(): Promise<void>;
     changeInternalStatus: (status: PinResultStatus) => void;
     renderLockedPage: () => JSX.Element;
-    render(): JSX.Element;
+    render(): any;
 }
 export declare function hasUserSetPinCode(serviceName?: string): any;
 export declare function deleteUserPinCode(serviceName?: string): any;
