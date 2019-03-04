@@ -605,9 +605,9 @@ class PinCode extends React.PureComponent<IProps, IState> {
 
   render() {
     const { password, showError, attemptFailed, changeScreen } = this.state;
-    const start =this.getStartTitle()
-    const enter =this.getEnterTitle()
-    const update =this.getUpdateTitle()
+    const start = this.getStartTitle();
+    const enter = this.getEnterTitle();
+    const update = this.getUpdateTitle();
 
     return (
       <View
@@ -617,12 +617,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
             : styles.container
         }
       >
-        <Animate
-          show
-          start={start}
-          enter={enter}
-          update={update}
-        >
+        <Animate show start={start} enter={enter} update={update}>
           {({ opacity, colorTitle, opacityTitle }: any) =>
             this.props.titleComponent
               ? this.props.titleComponent()
@@ -640,12 +635,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
             ? this.props.passwordComponent()
             : this.renderCirclePassword()}
         </View>
-        <Animate
-          show
-          start={start}
-          enter={enter}
-          update={update}
-        >
+        <Animate show start={start} enter={enter} update={update}>
           {({ opacity, colorSubtitle, opacityTitle }: any) =>
             this.props.subtitleComponent
               ? this.props.subtitleComponent()
@@ -894,7 +884,7 @@ let styles = StyleSheet.create({
   },
   grid: {
     maxWidth: grid.unit * 16.25,
-    alignSelf: 'center'
-    flex: 1,
+    alignSelf: "center",
+    flex: 1
   }
 });

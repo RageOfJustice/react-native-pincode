@@ -593,7 +593,7 @@ let styles = StyleSheet.create({
     },
     grid: {
         maxWidth: grid.unit * 16.25,
-        alignSelf: 'center',
-        flex: 1,
+        alignSelf: "center",
+        flex: 1
     }
 });
