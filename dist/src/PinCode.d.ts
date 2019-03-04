@@ -1,6 +1,7 @@
 /// <reference types="react" />
-import * as React from 'react';
-import { StyleProp, TextStyle, ViewStyle } from 'react-native';
+import * as React from "react";
+import { StyleProp, TextStyle, ViewStyle } from "react-native";
+import { easeLinear } from "d3-ease";
 /**
  * Pin Code Component
  */
@@ -14,7 +15,7 @@ export declare type IProps = {
     buttonDeleteText?: string;
     cancelFunction?: () => void;
     previousPin?: string;
-    pinCodeStatus?: 'initial' | 'success' | 'failure' | 'locked';
+    pinCodeStatus?: "initial" | "success" | "failure" | "locked";
     buttonNumberComponent?: any;
     passwordLength: number;
     iconButtonDeleteDisabled?: boolean;
@@ -92,6 +93,32 @@ declare class PinCode extends React.PureComponent<IProps, IState> {
     renderButtonDelete: (opacity: number) => JSX.Element;
     renderTitle: (colorTitle: string, opacityTitle: number, attemptFailed: boolean, showError: boolean) => JSX.Element;
     renderSubtitle: (colorTitle: string, opacityTitle: number, attemptFailed: boolean, showError: boolean) => JSX.Element;
+    getStartTitle: () => {
+        opacity: number;
+        colorTitle: string;
+        colorSubtitle: string;
+        opacityTitle: number;
+    };
+    getUpdateTitle: () => {
+        opacity: number[];
+        colorTitle: string[];
+        colorSubtitle: string[];
+        opacityTitle: number[];
+        timing: {
+            duration: number;
+            ease: typeof easeLinear;
+        };
+    };
+    getEnterTitle: () => {
+        opacity: number[];
+        colorTitle: string[];
+        colorSubtitle: string[];
+        opacityTitle: number[];
+        timing: {
+            duration: number;
+            ease: typeof easeLinear;
+        };
+    };
     render(): JSX.Element;
 }
 export default PinCode;

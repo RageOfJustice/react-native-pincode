@@ -1,11 +1,9 @@
-import * as Keychain from 'react-native-keychain'
+import * as Keychain from "react-native-keychain";
 
-export const hasPinCode = async (serviceName: string) => {
-  return await Keychain.getInternetCredentials(serviceName).then(res => {
-    return !!res && !!res.password
-  })
-}
+export const hasPinCode = (serviceName: string) =>
+  Keychain.getInternetCredentials(serviceName).then(
+    res => !!res && !!res.password
+  );
 
-export const deletePinCode = async (serviceName: string) => {
-  return await Keychain.resetInternetCredentials(serviceName)
-}
+export const deletePinCode = (serviceName: string) =>
+  Keychain.resetInternetCredentials(serviceName);
