@@ -612,16 +612,25 @@ class PinCode extends React.PureComponent<IProps, IState> {
           enter={this.getEnterTitle}
           update={this.getUpdateTitle}
         >
-          {({ opacity, colorTitle, opacityTitle }: any) =>
-            this.props.titleComponent
-              ? this.props.titleComponent()
-              : this.renderTitle(
-                  colorTitle,
-                  opacityTitle,
-                  attemptFailed,
-                  showError
-                )
-          }
+          {({ opacity, colorTitle, opacityTitle }: any) => (
+            <View
+              style={[
+                { opacity },
+                this.props.styleViewTitle
+                  ? this.props.styleViewTitle
+                  : styles.viewTitle
+              ]}
+            >
+              {this.props.titleComponent
+                ? this.props.titleComponent()
+                : this.renderTitle(
+                    colorTitle,
+                    opacityTitle,
+                    attemptFailed,
+                    showError
+                  )}
+            </View>
+          )}
         </Animate>
         <View style={styles.flexCirclePassword}>
           {this.props.passwordComponent
@@ -634,16 +643,25 @@ class PinCode extends React.PureComponent<IProps, IState> {
           enter={this.getEnterTitle}
           update={this.getUpdateTitle}
         >
-          {({ opacity, colorSubtitle, opacityTitle }: any) =>
-            this.props.subtitleComponent
-              ? this.props.subtitleComponent()
-              : this.renderSubtitle(
-                  colorSubtitle,
-                  opacityTitle,
-                  attemptFailed,
-                  showError
-                )
-          }
+          {({ opacity, colorSubtitle, opacityTitle }: any) => (
+            <View
+              style={[
+                { opacity },
+                this.props.styleViewTitle
+                  ? this.props.styleViewTitle
+                  : styles.viewTitle
+              ]}
+            >
+              {this.props.subtitleComponent
+                ? this.props.subtitleComponent()
+                : this.renderSubtitle(
+                    colorSubtitle,
+                    opacityTitle,
+                    attemptFailed,
+                    showError
+                  )}
+            </View>
+          )}
         </Animate>
         <Grid style={styles.grid}>
           <Row
