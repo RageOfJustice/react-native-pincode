@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const colors = {
     red: '#FC4349',
     alert: '#FC4349',
@@ -25,7 +23,6 @@ const colors = {
     altStrategies: '#FC4349',
     globalDebtSecurities: '#213249'
 };
-exports.colors = colors;
 const documentColor = (docType) => {
     switch (docType) {
         case 'CUSTODY_REPORT':
@@ -35,4 +32,4 @@ const documentColor = (docType) => {
             return colors.primary;
     }
 };
-exports.documentColor = documentColor;
+export { colors, documentColor };

@@ -95,14 +95,14 @@ declare class PinCode extends React.PureComponent<IProps, IState> {
     renderSubtitle: (colorTitle: string, opacityTitle: number, attemptFailed: boolean, showError: boolean) => JSX.Element;
     getStartTitle: () => {
         opacity: number;
-        colorTitle: string;
-        colorSubtitle: string;
+        colorTitle: any;
+        colorSubtitle: any;
         opacityTitle: number;
     };
     getUpdateTitle: () => {
         opacity: number[];
-        colorTitle: string[];
-        colorSubtitle: string[];
+        colorTitle: any[];
+        colorSubtitle: any[];
         opacityTitle: number[];
         timing: {
             duration: number;
@@ -111,8 +111,8 @@ declare class PinCode extends React.PureComponent<IProps, IState> {
     };
     getEnterTitle: () => {
         opacity: number[];
-        colorTitle: string[];
-        colorSubtitle: string[];
+        colorTitle: any[];
+        colorSubtitle: any[];
         opacityTitle: number[];
         timing: {
             duration: number;

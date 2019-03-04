@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const grid = {
     unit: 16,
     headline: 32,
@@ -16,4 +14,4 @@ const grid = {
     mediumOpacity: 0.6,
     highOpacity: 0.8
 };
-exports.grid = grid;
+export { grid };

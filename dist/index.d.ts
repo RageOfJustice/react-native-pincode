@@ -115,6 +115,6 @@ declare class PINCode extends React.PureComponent<IProps, IState> {
     renderLockedPage: () => JSX.Element;
     render(): JSX.Element;
 }
-export declare function hasUserSetPinCode(serviceName?: string): Promise<boolean>;
-export declare function deleteUserPinCode(serviceName?: string): Promise<void>;
+export declare function hasUserSetPinCode(serviceName?: string): any;
+export declare function deleteUserPinCode(serviceName?: string): any;
 export default PINCode;
