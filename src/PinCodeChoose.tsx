@@ -1,5 +1,11 @@
 import * as React from "react";
-import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
+import {
+  StyleProp,
+  StyleSheet,
+  TextStyle,
+  View,
+  ViewStyle
+} from "react-native";
 import PinCode, { PinStatus } from "./PinCode";
 import * as Keychain from "react-native-keychain";
 
@@ -8,72 +14,70 @@ import * as Keychain from "react-native-keychain";
  */
 
 export type IProps = {
-  storePin: any
-  titleChoose: string
-  subtitleChoose: string
-  titleConfirm: string
-  subtitleConfirm: string
-  buttonNumberComponent: any
-  finishProcess?: (pinCode: string) => void
-  passwordLength?: number
-  passwordComponent: any
-  titleAttemptFailed?: string
-  titleConfirmFailed?: string
-  subtitleError?: string
-  colorPassword?: string
-  buttonDeleteText?: string
-  colorPasswordError?: string
-  iconButtonDeleteDisabled?: boolean
-  numbersButtonOverlayColor?: string
-  buttonDeleteComponent: any
-  titleComponent: any
-  subtitleComponent: any
-  pinCodeKeychainName: string
-  getCurrentLength?: (length: number) => void
-  styleContainerPinCode?: StyleProp<ViewStyle>
-  styleColorTitle?: string
-  styleColorTitleError?: string
-  styleColorSubtitle?: string
-  emptyColumnComponent: any
-  styleColorSubtitleError?: string
-  styleButtonCircle?: StyleProp<ViewStyle>
-  styleTextButton?: StyleProp<TextStyle>
-  styleCircleHiddenPassword?: StyleProp<ViewStyle>
-  styleCircleSizeEmpty?: number
-  styleCircleSizeFull?: number
-  styleRowButtons?: StyleProp<ViewStyle>
-  styleColumnButtons?: StyleProp<ViewStyle>
-  styleEmptyColumn?: StyleProp<ViewStyle>
-  styleViewTitle?: StyleProp<ViewStyle>
-  styleTextTitle?: StyleProp<TextStyle>
-  styleTextSubtitle?: StyleProp<TextStyle>
-  styleContainer?: StyleProp<ViewStyle>
-  styleColumnDeleteButton?: StyleProp<ViewStyle>
-  styleDeleteButtonColorShowUnderlay?: string
-  styleDeleteButtonColorHideUnderlay?: string
-  styleDeleteButtonIcon?: string
-  styleDeleteButtonSize?: number
-  styleDeleteButtonText?: StyleProp<TextStyle>
-  styleColorButtonTitle?: string
-  styleColorButtonTitleSelected?: string
-  pinCodeVisible?: boolean
-  textPasswordVisibleSize?: number
-  textPasswordVisibleFamily?: string
-  titleValidationFailed?: string
-  validationRegex?: RegExp
-}
+  storePin: any;
+  titleChoose: string;
+  subtitleChoose: string;
+  titleConfirm: string;
+  subtitleConfirm: string;
+  buttonNumberComponent: any;
+  finishProcess?: (pinCode: string) => void;
+  passwordLength?: number;
+  passwordComponent: any;
+  titleAttemptFailed?: string;
+  titleConfirmFailed?: string;
+  subtitleError?: string;
+  colorPassword?: string;
+  buttonDeleteText?: string;
+  colorPasswordError?: string;
+  iconButtonDeleteDisabled?: boolean;
+  numbersButtonOverlayColor?: string;
+  buttonDeleteComponent: any;
+  titleComponent: any;
+  subtitleComponent: any;
+  pinCodeKeychainName: string;
+  getCurrentLength?: (length: number) => void;
+  styleContainerPinCode?: StyleProp<ViewStyle>;
+  styleColorTitle?: string;
+  styleColorTitleError?: string;
+  styleColorSubtitle?: string;
+  emptyColumnComponent: any;
+  styleColorSubtitleError?: string;
+  styleButtonCircle?: StyleProp<ViewStyle>;
+  styleTextButton?: StyleProp<TextStyle>;
+  styleCircleHiddenPassword?: StyleProp<ViewStyle>;
+  styleCircleSizeEmpty?: number;
+  styleCircleSizeFull?: number;
+  styleRowButtons?: StyleProp<ViewStyle>;
+  styleColumnButtons?: StyleProp<ViewStyle>;
+  styleEmptyColumn?: StyleProp<ViewStyle>;
+  styleViewTitle?: StyleProp<ViewStyle>;
+  styleTextTitle?: StyleProp<TextStyle>;
+  styleTextSubtitle?: StyleProp<TextStyle>;
+  styleContainer?: StyleProp<ViewStyle>;
+  styleColumnDeleteButton?: StyleProp<ViewStyle>;
+  styleDeleteButtonColorShowUnderlay?: string;
+  styleDeleteButtonColorHideUnderlay?: string;
+  styleDeleteButtonIcon?: string;
+  styleDeleteButtonSize?: number;
+  styleDeleteButtonText?: StyleProp<TextStyle>;
+  styleColorButtonTitle?: string;
+  styleColorButtonTitleSelected?: string;
+  pinCodeVisible?: boolean;
+  textPasswordVisibleSize?: number;
+  textPasswordVisibleFamily?: string;
+  titleValidationFailed?: string;
+  validationRegex?: RegExp;
+};
 
 export type IState = {
-  status: PinStatus
-  pinCode: string
-}
+  status: PinStatus;
+  pinCode: string;
+};
 
 class PinCodeChoose extends React.PureComponent<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = { status: PinStatus.choose, pinCode: "" };
-    this.endProcessCreation = this.endProcessCreation.bind(this);
-    this.endProcessConfirm = this.endProcessConfirm.bind(this);
   }
 
   endProcessCreation = (pinCode: string, isErrorValidation?: boolean) => {
@@ -91,7 +95,8 @@ class PinCodeChoose extends React.PureComponent<IProps, IState> {
         await Keychain.setInternetCredentials(
           this.props.pinCodeKeychainName,
           this.props.pinCodeKeychainName,
-          pinCode);
+          pinCode
+        );
       }
       if (!!this.props.finishProcess) this.props.finishProcess(pinCode);
     } else {
@@ -110,7 +115,8 @@ class PinCodeChoose extends React.PureComponent<IProps, IState> {
           this.props.styleContainer
             ? this.props.styleContainer
             : styles.container
-        }>
+        }
+      >
         {this.state.status === PinStatus.choose && (
           <PinCode
             endProcess={this.endProcessCreation}
@@ -244,7 +250,7 @@ class PinCodeChoose extends React.PureComponent<IProps, IState> {
 
 export default PinCodeChoose;
 
-let styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",

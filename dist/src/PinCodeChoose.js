@@ -38,8 +38,6 @@ class PinCodeChoose extends React.PureComponent {
             this.setState({ status: PinStatus.choose });
         };
         this.state = { status: PinStatus.choose, pinCode: "" };
-        this.endProcessCreation = this.endProcessCreation.bind(this);
-        this.endProcessConfirm = this.endProcessConfirm.bind(this);
     }
     render() {
         return (<View style={this.props.styleContainer
@@ -51,7 +49,7 @@ class PinCodeChoose extends React.PureComponent {
     }
 }
 export default PinCodeChoose;
-let styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
