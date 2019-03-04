@@ -527,22 +527,20 @@ class PinCode extends React.PureComponent<IProps, IState> {
     opacityTitle: number,
     attemptFailed: boolean,
     showError: boolean
-  ) => {
-    return (
-      <Text
-        style={[
-          { color: colorTitle, opacity: opacityTitle },
-          this.props.styleTextSubtitle
-            ? this.props.styleTextSubtitle
-            : styles.textSubtitle
-        ]}
-      >
-        {attemptFailed || showError
-          ? this.props.subtitleError
-          : this.props.subtitle}
-      </Text>
-    );
-  };
+  ) => (
+    <Text
+      style={[
+        { color: colorTitle, opacity: opacityTitle },
+        this.props.styleTextSubtitle
+          ? this.props.styleTextSubtitle
+          : styles.textSubtitle
+      ]}
+    >
+      {attemptFailed || showError
+        ? this.props.subtitleError
+        : this.props.subtitle}
+    </Text>
+  );
 
   getStartTitle = () => ({
     opacity: 0,
@@ -625,6 +623,14 @@ class PinCode extends React.PureComponent<IProps, IState> {
                 ? this.props.titleComponent()
                 : this.renderTitle(
                     colorTitle,
+                    opacityTitle,
+                    attemptFailed,
+                    showError
+                  )}
+              {this.props.subtitleComponent
+                ? this.props.subtitleComponent()
+                : this.renderSubtitle(
+                    colorSubtitle,
                     opacityTitle,
                     attemptFailed,
                     showError
