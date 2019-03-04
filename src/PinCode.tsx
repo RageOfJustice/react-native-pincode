@@ -606,9 +606,9 @@ class PinCode extends React.PureComponent<IProps, IState> {
       >
         <Animate
           show
-          start={this.getStartTitle}
-          enter={this.getEnterTitle}
-          update={this.getUpdateTitle}
+          start={this.getStartTitle()}
+          enter={this.getEnterTitle()}
+          update={this.getUpdateTitle()}
         >
           {({ opacity, colorTitle, opacityTitle }: any) => (
             <View
@@ -627,14 +627,6 @@ class PinCode extends React.PureComponent<IProps, IState> {
                     attemptFailed,
                     showError
                   )}
-              {this.props.subtitleComponent
-                ? this.props.subtitleComponent()
-                : this.renderSubtitle(
-                    colorSubtitle,
-                    opacityTitle,
-                    attemptFailed,
-                    showError
-                  )}
             </View>
           )}
         </Animate>
@@ -645,9 +637,9 @@ class PinCode extends React.PureComponent<IProps, IState> {
         </View>
         <Animate
           show
-          start={this.getStartTitle}
-          enter={this.getEnterTitle}
-          update={this.getUpdateTitle}
+          start={this.getStartTitle()}
+          enter={this.getEnterTitle()}
+          update={this.getUpdateTitle()}
         >
           {({ opacity, colorSubtitle, opacityTitle }: any) => (
             <View
