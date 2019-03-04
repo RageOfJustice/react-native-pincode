@@ -43,7 +43,6 @@ export type IProps = {
   status: "choose" | "enter" | "locked";
   storedPin?: string;
   storePin?: any;
-  styleMainContainer?: StyleProp<ViewStyle>;
   stylePinCodeChooseContainer?: StyleProp<ViewStyle>;
   stylePinCodeEnterContainer?: StyleProp<ViewStyle>;
   styleLockScreenButton?: StyleProp<ViewStyle>;
@@ -200,7 +199,7 @@ class PINCode extends React.PureComponent<IProps, IState> {
   };
 
   render() {
-    const { status, pinStatus, styleMainContainer } = this.props;
+    const { status, pinStatus } = this.props;
     return status === PinStatus.choose ? (
       <PinCodeChoose
         storePin={this.props.storePin || null}

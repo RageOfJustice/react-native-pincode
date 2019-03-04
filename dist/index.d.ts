@@ -31,7 +31,6 @@ export declare type IProps = {
     status: "choose" | "enter" | "locked";
     storedPin?: string;
     storePin?: any;
-    styleMainContainer?: StyleProp<ViewStyle>;
     stylePinCodeChooseContainer?: StyleProp<ViewStyle>;
     stylePinCodeEnterContainer?: StyleProp<ViewStyle>;
     styleLockScreenButton?: StyleProp<ViewStyle>;
