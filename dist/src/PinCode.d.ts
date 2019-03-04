@@ -91,8 +91,20 @@ declare class PinCode extends React.PureComponent<IProps, IState> {
     showError(isErrorValidation?: boolean): Promise<void>;
     renderCirclePassword: () => JSX.Element;
     renderButtonDelete: (opacity: number) => JSX.Element;
-    renderTitle: (colorTitle: string, opacityTitle: number, attemptFailed: boolean, showError: boolean) => JSX.Element;
-    renderSubtitle: (colorTitle: string, opacityTitle: number, attemptFailed: boolean, showError: boolean) => JSX.Element;
+    renderTitle: ({ opacity, colorTitle, opacityTitle, attemptFailed, showError }: {
+        opacity: number;
+        colorTitle: string;
+        opacityTitle: number;
+        attemptFailed: boolean;
+        showError: boolean;
+    }) => JSX.Element;
+    renderSubtitle: ({ opacity, colorTitle, opacityTitle, attemptFailed, showError }: {
+        opacity: number;
+        colorTitle: string;
+        opacityTitle: number;
+        attemptFailed: boolean;
+        showError: boolean;
+    }) => JSX.Element;
     getStartTitle: () => {
         opacity: number;
         colorTitle: any;

@@ -253,20 +253,20 @@ class PinCode extends React.PureComponent {
         </View>
       </TouchableHighlight>);
         };
-        this.renderTitle = (colorTitle, opacityTitle, attemptFailed, showError) => {
-            return (<Text style={[
-                { color: colorTitle, opacity: opacityTitle },
-                this.props.styleTextTitle
-                    ? this.props.styleTextTitle
-                    : styles.textTitle
-            ]}>
+        this.renderTitle = ({ opacity, colorTitle, opacityTitle, attemptFailed, showError }) => (<View style={{ opacity }}>
+      <Text style={[
+            { color: colorTitle, opacity: opacityTitle },
+            this.props.styleTextTitle
+                ? this.props.styleTextTitle
+                : styles.textTitle
+        ]}>
         {(attemptFailed && this.props.titleAttemptFailed) ||
-                (showError && this.props.titleConfirmFailed) ||
-                (showError && this.props.titleValidationFailed) ||
-                this.props.sentenceTitle}
-      </Text>);
-        };
-        this.renderSubtitle = (colorTitle, opacityTitle, attemptFailed, showError) => (<Text style={[
+            (showError && this.props.titleConfirmFailed) ||
+            (showError && this.props.titleValidationFailed) ||
+            this.props.sentenceTitle}
+      </Text>
+    </View>);
+        this.renderSubtitle = ({ opacity, colorTitle, opacityTitle, attemptFailed, showError }) => (<Text style={[
             { color: colorTitle, opacity: opacityTitle },
             this.props.styleTextSubtitle
                 ? this.props.styleTextSubtitle
@@ -398,16 +398,15 @@ class PinCode extends React.PureComponent {
             ? this.props.styleContainer
             : styles.container}>
         <Animate show start={this.getStartTitle()} enter={this.getEnterTitle()} update={this.getUpdateTitle()}>
-          {({ opacity, colorTitle, opacityTitle }) => (<View style={[
-            { opacity },
-            this.props.styleViewTitle
-                ? this.props.styleViewTitle
-                : styles.viewTitle
-        ]}>
-              {this.props.titleComponent
+          {({ opacity, colorTitle, opacityTitle }) => this.props.titleComponent
             ? this.props.titleComponent()
-            : this.renderTitle(colorTitle, opacityTitle, attemptFailed, showError)}
-            </View>)}
+            : this.renderTitle({
+                opacity,
+                colorTitle,
+                opacityTitle,
+                attemptFailed,
+                showError
+            })}
         </Animate>
         <View style={styles.flexCirclePassword}>
           {this.props.passwordComponent
@@ -415,16 +414,15 @@ class PinCode extends React.PureComponent {
             : this.renderCirclePassword()}
         </View>
         <Animate show start={this.getStartTitle()} enter={this.getEnterTitle()} update={this.getUpdateTitle()}>
-          {({ opacity, colorSubtitle, opacityTitle }) => (<View style={[
-            { opacity },
-            this.props.styleViewTitle
-                ? this.props.styleViewTitle
-                : styles.viewTitle
-        ]}>
-              {this.props.subtitleComponent
+          {({ opacity, colorSubtitle, opacityTitle }) => this.props.subtitleComponent
             ? this.props.subtitleComponent()
-            : this.renderSubtitle(colorSubtitle, opacityTitle, attemptFailed, showError)}
-            </View>)}
+            : this.renderSubtitle({
+                opacity,
+                colorTitle: colorSubtitle,
+                opacityTitle,
+                attemptFailed,
+                showError
+            })}
         </Animate>
         <Grid style={styles.grid}>
           <Row style={this.props.styleRowButtons

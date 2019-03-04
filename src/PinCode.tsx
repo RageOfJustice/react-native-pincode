@@ -94,6 +94,14 @@ export enum PinStatus {
   enter = "enter"
 }
 
+type RenderTitleArgs = {
+  opacity: number;
+  colorTitle: string;
+  opacityTitle: number;
+  attemptFailed: boolean;
+  showError: boolean;
+};
+
 const textDeleteButtonDefault = "delete";
 
 class PinCode extends React.PureComponent<IProps, IState> {
@@ -244,8 +252,8 @@ class PinCode extends React.PureComponent<IProps, IState> {
                         ? this.props.styleColorButtonTitleSelected
                         : colors.white
                       : this.props.styleColorButtonTitle
-                        ? this.props.styleColorButtonTitle
-                        : colors.grey
+                      ? this.props.styleColorButtonTitle
+                      : colors.grey
                 }
               ]}
             >
@@ -353,8 +361,8 @@ class PinCode extends React.PureComponent<IProps, IState> {
                       ? this.props.colorPasswordError
                       : colors.alert
                     : this.props.colorPassword
-                      ? this.props.colorPassword
-                      : colors.turquoise
+                    ? this.props.colorPassword
+                    : colors.turquoise
                 ],
                 borderRadius: [
                   lengthSup
@@ -499,13 +507,14 @@ class PinCode extends React.PureComponent<IProps, IState> {
     );
   };
 
-  renderTitle = (
-    colorTitle: string,
-    opacityTitle: number,
-    attemptFailed: boolean,
-    showError: boolean
-  ) => {
-    return (
+  renderTitle = ({
+    opacity,
+    colorTitle,
+    opacityTitle,
+    attemptFailed,
+    showError
+  }: RenderTitleArgs) => (
+    <View style={{ opacity }}>
       <Text
         style={[
           { color: colorTitle, opacity: opacityTitle },
@@ -519,15 +528,16 @@ class PinCode extends React.PureComponent<IProps, IState> {
           (showError && this.props.titleValidationFailed) ||
           this.props.sentenceTitle}
       </Text>
-    );
-  };
+    </View>
+  );
 
-  renderSubtitle = (
-    colorTitle: string,
-    opacityTitle: number,
-    attemptFailed: boolean,
-    showError: boolean
-  ) => (
+  renderSubtitle = ({
+    opacity,
+    colorTitle,
+    opacityTitle,
+    attemptFailed,
+    showError
+  }: RenderTitleArgs) => (
     <Text
       style={[
         { color: colorTitle, opacity: opacityTitle },
@@ -561,8 +571,8 @@ class PinCode extends React.PureComponent<IProps, IState> {
           ? this.props.styleColorTitleError
           : colors.alert
         : this.props.styleColorTitle
-          ? this.props.styleColorTitle
-          : colors.grey
+        ? this.props.styleColorTitle
+        : colors.grey
     ],
     colorSubtitle: [
       this.state.showError || this.state.attemptFailed
@@ -570,8 +580,8 @@ class PinCode extends React.PureComponent<IProps, IState> {
           ? this.props.styleColorSubtitleError
           : colors.alert
         : this.props.styleColorSubtitle
-          ? this.props.styleColorSubtitle
-          : colors.grey
+        ? this.props.styleColorSubtitle
+        : colors.grey
     ],
     opacityTitle: [
       this.state.showError || this.state.attemptFailed ? grid.highOpacity : 1
@@ -610,25 +620,17 @@ class PinCode extends React.PureComponent<IProps, IState> {
           enter={this.getEnterTitle()}
           update={this.getUpdateTitle()}
         >
-          {({ opacity, colorTitle, opacityTitle }: any) => (
-            <View
-              style={[
-                { opacity },
-                this.props.styleViewTitle
-                  ? this.props.styleViewTitle
-                  : styles.viewTitle
-              ]}
-            >
-              {this.props.titleComponent
-                ? this.props.titleComponent()
-                : this.renderTitle(
-                    colorTitle,
-                    opacityTitle,
-                    attemptFailed,
-                    showError
-                  )}
-            </View>
-          )}
+          {({ opacity, colorTitle, opacityTitle }: any) =>
+            this.props.titleComponent
+              ? this.props.titleComponent()
+              : this.renderTitle({
+                  opacity,
+                  colorTitle,
+                  opacityTitle,
+                  attemptFailed,
+                  showError
+                })
+          }
         </Animate>
         <View style={styles.flexCirclePassword}>
           {this.props.passwordComponent
@@ -641,25 +643,17 @@ class PinCode extends React.PureComponent<IProps, IState> {
           enter={this.getEnterTitle()}
           update={this.getUpdateTitle()}
         >
-          {({ opacity, colorSubtitle, opacityTitle }: any) => (
-            <View
-              style={[
-                { opacity },
-                this.props.styleViewTitle
-                  ? this.props.styleViewTitle
-                  : styles.viewTitle
-              ]}
-            >
-              {this.props.subtitleComponent
-                ? this.props.subtitleComponent()
-                : this.renderSubtitle(
-                    colorSubtitle,
-                    opacityTitle,
-                    attemptFailed,
-                    showError
-                  )}
-            </View>
-          )}
+          {({ opacity, colorSubtitle, opacityTitle }: any) =>
+            this.props.subtitleComponent
+              ? this.props.subtitleComponent()
+              : this.renderSubtitle({
+                  opacity,
+                  colorTitle: colorSubtitle,
+                  opacityTitle,
+                  attemptFailed,
+                  showError
+                })
+          }
         </Animate>
         <Grid style={styles.grid}>
           <Row
